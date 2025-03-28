@@ -4,9 +4,9 @@ import { checkValidation } from "../utils/validation";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import {signInWithEmailAndPassword,createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/slices/UserSlice";
+import { bgLogo } from "../utils/constants";
 const Login = () => {
  
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +20,7 @@ const Login = () => {
   const password = useRef("");
   const name = useRef("");
   const dispatch = useDispatch();
-  const navigate =useNavigate();
+  
 
   // const [email, setEmail]=useState("");  1st way
   // const [password, setPassword]=useState("");
@@ -120,7 +120,7 @@ const Login = () => {
       <Header />
       <div className="fixed inset-0">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/50fcc930-ba3f-4cae-9257-9f920e30a998/web/IN-en-20250310-TRIFECTA-perspective_739387a0-ff14-44ed-a5af-36e5aa4d236e_small.jpg"
+          src={bgLogo}
           alt="logo"
           className="h-full w-full object-cover"
         />

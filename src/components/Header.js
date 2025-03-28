@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import {onAuthStateChanged, signOut } from "firebase/auth";
 import { addUser,removeUser } from "../utils/redux/slices/UserSlice";
+import { avatar } from "../utils/constants";
 
 
 
@@ -28,7 +29,7 @@ signOut(auth).then(() => {
 
 
   useEffect(() => {
-    onAuthStateChanged (auth, (user) => {
+    const unsubscribe = onAuthStateChanged (auth, (user) => {
   
 
         if (user) {
@@ -42,6 +43,8 @@ signOut(auth).then(() => {
             navigate("/");
         }
     });
+
+    return ()=>{ unsubscribe()}
 }, []);
 
 
@@ -60,10 +63,10 @@ signOut(auth).then(() => {
           <>
             
             <img className="w-12 h-12 "
-              src="https://occ-0-6246-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABdEyUfiGKB_IE32uWZW3KcuE4Vk5kEFKQM1HrVqjN4jNv-Robrvl9ctyTBXJkMcZBfIjTnqQDRqsf7TQTr_RwCEwgwqxhME.png?r=d47"
+              src={avatar}
               alt="profile"
             />
-            <button className="cursor-pointer bg-red-700 text-white w-20 h-10 rounded-lg m-2" onClick={handleSignOut}>
+            <button className="cursor-pointer bg-red-700 text-white w-20 h-10 rounded-lg mx-5" onClick={handleSignOut}>
               Sign out
             </button>
           </>

@@ -1,11 +1,20 @@
 import Header from "./Header";
-const Browse = ()=>{
-    return (
-        <div>
-        <Header />
-        
-        </div>
-    )
-}
+import useFetchData from "../utils/custom_Hooks/useFetchData";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
-export default Browse ; 
+const Browse = () => {
+  useFetchData();
+
+  
+
+  return (
+    <>
+      <Header />
+     <MainContainer/>
+     <SecondaryContainer/>
+    </>
+  );
+};
+
+export default Browse;
