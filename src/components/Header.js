@@ -4,7 +4,7 @@ import logo from "../../public/Assets/Netflix_Logo.png";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import {onAuthStateChanged, signOut } from "firebase/auth";
-import { addUser,removeUser } from "../utils/redux/slices/UserSlice";
+import { addUser,removeUser } from "../utils/redux/slices/userSlice";
 import { avatar } from "../utils/constants";
 
 
