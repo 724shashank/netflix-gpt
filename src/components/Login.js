@@ -5,7 +5,7 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import {signInWithEmailAndPassword,createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/redux/slices/UserSlice";
+import { addUser } from "../utils/redux/slices/userSlice";
 import { bgLogo } from "../utils/constants";
 const Login = () => {
  
