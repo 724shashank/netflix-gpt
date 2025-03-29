@@ -13,12 +13,11 @@ const firebaseConfig = {
   projectId: "netflix-gpt-724",
   storageBucket: "netflix-gpt-724.firebasestorage.app",
   messagingSenderId: "969892607113",
-  appId: "1:969892607113:web:5ced88a5c1db4b7f75c258",
-  measurementId: "G-VV5TS5DLYD"
+  appId: "1:969892607113:web:f18b5fc13869ee5a75c258",
+  measurementId: "G-06C7JWJYGX"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
 export const auth = getAuth();
