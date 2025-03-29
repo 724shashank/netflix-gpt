@@ -9,7 +9,7 @@ const MovieList = ({ title, movies }) => {
           {movies?.length > 0 ? (
             movies?.map((movie) => (
               <MovieCard
-                key={movie.key}
+                key={movie.id}
                 rating={movie.average_rating}
                 posterPath={movie.poster_path}
               />

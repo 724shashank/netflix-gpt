@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { option } from "../constants";
-import { addMovieData } from "../redux/slices/movieSlice";
+import { addUpcomingData } from "../redux/slices/movieSlice";
 import { useDispatch } from "react-redux";
 
-const useFetchData = () => {
+const useFetchUpcomingData = () => {
 
 
   const options = option;
-  const url = process.env.API;
+  const url = process.env.Upcoming_Movies_URL;
   const dispatch = useDispatch();
 
 
@@ -15,7 +15,7 @@ const useFetchData = () => {
     try {
       const res = await fetch(url, options);
       const data = await res.json();
-      dispatch(addMovieData(data?.results))
+      dispatch(addUpcomingData(data?.results))
             
     } catch (err) {
       (`Error Encountered: ${err.message}`);
@@ -29,4 +29,4 @@ const useFetchData = () => {
 
 };
 
-export default useFetchData;
+export default useFetchUpcomingData;

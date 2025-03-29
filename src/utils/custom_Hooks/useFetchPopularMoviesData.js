@@ -18,7 +18,7 @@ const useFetchPopularMoviesData = () => {
       dispatch(addPopularMovieData(data?.results))
             
     } catch (err) {
-      setError(`Error Encountered: ${err.message}`);
+      (`Error Encountered: ${err.message}`);
     }
   };
 
