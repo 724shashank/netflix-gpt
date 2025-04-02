@@ -6,21 +6,27 @@ import useFetchPopularMoviesData from "../utils/custom_Hooks/useFetchPopularMovi
 import useTopRatedData from "../utils/custom_Hooks/useTopRatedData";
 import useFetchUpcomingData from "../utils/custom_Hooks/useFetchUpcomingData";
 import useFetchTvShows from "../utils/custom_Hooks/useFetchTvShows";
+import GPTSearch from "./GPTSearch";
+import { useSelector } from "react-redux";
 const Browse = () => {
+  const toggleButton = useSelector((store) => store.gpt.showGptSearch);
   useFetchData();
   useFetchPopularMoviesData();
   useTopRatedData();
   useFetchUpcomingData();
   useFetchTvShows();
 
-
-  
-
   return (
     <>
       <Header />
-     <MainContainer/>
-     <SecondaryContainer/>
+      {!toggleButton ? (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      ) : (
+        <GPTSearch />
+      )}
     </>
   );
 };

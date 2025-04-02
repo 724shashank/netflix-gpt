@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import { option } from "../constants";
 const useFetchTrailer = (vid) => {
+
   const [videoKey, setvideoKey] = useState("");
 
   const getVideos = async () => {

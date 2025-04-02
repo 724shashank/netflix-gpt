@@ -7,6 +7,7 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/slices/userSlice";
 import { bgLogo } from "../utils/constants";
+import LoadingSpinner from "./LoadingSpinner";
 const Login = () => {
  
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +17,7 @@ const Login = () => {
     setShowPassword((prevData) => !prevData);
   };
   const [showSignUpForm, setshowSignUpForm] = useState(false);
+  const [loading, setLoading] = useState(false);
   const email = useRef("");
   const password = useRef("");
   const name = useRef("");
@@ -56,6 +58,8 @@ const Login = () => {
     e.preventDefault();
     const res = checkValidation(email.current.value, password.current.value);
     setErrorMessage(res.message);
+
+    setLoading(true);
 
     if (showSignUpForm) {
     
@@ -98,7 +102,7 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-         
+          setLoading(false);
       
          
           // ...
@@ -126,7 +130,7 @@ const Login = () => {
         />
       </div>
       <div className="flex justify-center items-center h-screen">
-        <form className="bg-[rgba(0,0,0,0.75)] absolute p-15 w-4/12 my-35 mx-auto right-0 left-0 text-white">
+        <form className="bg-[rgba(0,0,0,0.75)] absolute p-15 w-full md:w-4/12 my-35 mx-auto right-0 left-0 text-white">
           <div className="mr-7">
             <h1 className="text-4xl font-bold p-4 ">
               {showSignUpForm ? "Sign Up" : "Sign In"}
@@ -184,11 +188,10 @@ const Login = () => {
             </div>
 
             <button
-              style={{ backgroundColor: "#E50914" }}
-              className=" p-4 m-4 w-full rounded-lg cursor-pointer"
+              className=" bg-[#E50914] p-4 m-4 w-full rounded-lg cursor-pointer"
               onClick={handleClick}
             >
-              {showSignUpForm ? "Sign Up" : " Sign In"}
+             {loading ? <LoadingSpinner /> : showSignUpForm ? "Sign Up" : "Sign In"}
             </button>
             <p className="ml-4 cursor-pointer" onClick={toggleSignUp}>
               {showSignUpForm ? (
@@ -202,7 +205,7 @@ const Login = () => {
                 <>
                   <label className="text-gray-500">New to Netflix ? </label>
                   <label className=" text-white cursor-pointer">
-                    Sign Up Now{" "}
+                    Sign Up Now
                   </label>
                 </>
               )}

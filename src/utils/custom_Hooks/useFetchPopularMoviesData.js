@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { option } from "../constants";
 import { addPopularMovieData } from "../redux/slices/movieSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 const useFetchPopularMoviesData = () => {
-
+  const FetchPopularMoviesData = useSelector((store)=>store.movieData.popularMovies)
 
   const options = option;
   const url = process.env.Popular_Movies_URL;
@@ -23,7 +23,7 @@ const useFetchPopularMoviesData = () => {
   };
 
   useEffect(() => {
-    fetchApi();
+    !FetchPopularMoviesData && fetchApi();
    
   }, []);
 

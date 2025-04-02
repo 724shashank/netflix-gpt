@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { option } from "../constants";
 import { addTVShowsData } from "../redux/slices/movieSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 const useFetchTvShows = () => {
-
+  const FetchTvShows = useSelector((store)=>store.movieData.tvShowsData)
 
   const options = option;
   const url = process.env.Top_TV_Shows;
@@ -23,7 +23,7 @@ const useFetchTvShows = () => {
   };
 
   useEffect(() => {
-    fetchApi();
+    !FetchTvShows && fetchApi();
    
   }, []);
 

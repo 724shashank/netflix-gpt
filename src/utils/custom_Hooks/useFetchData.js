@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { option } from "../constants";
 import { addMovieData } from "../redux/slices/movieSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 const useFetchData = () => {
-
+ 
+  const FetchData = useSelector((store)=>store.movieData.nowPlayingMovies)
 
   const options = option;
   const url = process.env.API;
@@ -23,7 +24,8 @@ const useFetchData = () => {
   };
 
   useEffect(() => {
-    fetchApi();
+    if(!FetchData)
+      fetchApi();
    
   }, []);
 

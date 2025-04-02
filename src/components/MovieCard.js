@@ -1,11 +1,10 @@
 import { IMG_CDN } from "../utils/constants";
-const MovieCard = ({ posterPath, rating }) => {
+const MovieCard = ({ posterPath}) => {
+  if(!posterPath) return null ; 
   return (
     <>
-      <div className="w-50 pr-4">
+      <div className="w-30 md:w-50 pr-4">
         <img src={IMG_CDN + posterPath} alt="Movie Poster" />
-
-        <h1>{rating}</h1>
       </div>
     </>
   );

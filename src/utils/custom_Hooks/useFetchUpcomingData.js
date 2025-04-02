@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { option } from "../constants";
 import { addUpcomingData } from "../redux/slices/movieSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 const useFetchUpcomingData = () => {
-
+  const FetchUpcomingData = useSelector((store)=>store.movieData.upComingData)
 
   const options = option;
   const url = process.env.Upcoming_Movies_URL;
@@ -23,7 +23,7 @@ const useFetchUpcomingData = () => {
   };
 
   useEffect(() => {
-    fetchApi();
+    !FetchUpcomingData && fetchApi();
    
   }, []);
 

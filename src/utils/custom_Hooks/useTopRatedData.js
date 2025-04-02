@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { option } from "../constants";
 import { addTopRatedData } from "../redux/slices/movieSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 const useTopRatedData = () => {
-
+  const TopRatedData = useSelector((store)=>store.movieData.topRatedData)
 
   const options = option;
   const url = process.env.Top_Movies_URL;
@@ -23,7 +23,7 @@ const useTopRatedData = () => {
   };
 
   useEffect(() => {
-    fetchApi();
+    !TopRatedData && fetchApi();
    
   }, []);
 
