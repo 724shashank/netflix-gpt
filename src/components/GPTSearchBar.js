@@ -46,7 +46,7 @@ const fetchGptMovies = async(movie)=>{
     setLoading(true);
   
 
-    gptQuery =
+    const gptQuery =
       "Act as Movies recomendation system and suggest some movies for the query : " +
       text.current.value +
       ".give me the name of only 6 movies, comma seperated like the example result given ahead. Example Result: Ugly, 99, No-smoking, Go goa gone, Delhi-Belly, Gangs of Wasseypur.";
