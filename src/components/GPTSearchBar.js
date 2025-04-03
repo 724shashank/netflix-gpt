@@ -44,7 +44,7 @@ const fetchGptMovies = async(movie)=>{
 
   const handleGptSearch = async () => {
     setLoading(true);
-    console.log(text.current.value);
+  
 
     gptQuery =
       "Act as Movies recomendation system and suggest some movies for the query : " +
@@ -55,7 +55,7 @@ const fetchGptMovies = async(movie)=>{
       model: "gemini-2.0-flash",
       contents: gptQuery,
     });
-    console.log(response.text);
+    
 
     const searchedMovies = response.text.split(",");
     const arrayOfMovies = searchedMovies.map((movie)=>(fetchGptMovies(movie)))
@@ -77,13 +77,13 @@ const fetchGptMovies = async(movie)=>{
           onClick={(e) => e.preventDefault()}
         >
           <input
-            className="w-60 md:w-[50%] p-4 m-4 md:m-4 h-15 align-middle -mx-5  md:mx-[20%] text-2xl bg-amber-200 rounded-lg"
+            className="w-auto md:w-[50%] p-4 m-4 md:m-4 h-15 align-middle   md:mx-[20%] text-2xl bg-amber-200 rounded-lg"
             type="text"
             ref={text}
             placeholder={bhasha.gptPlaceHolderSearch}
           />
           <button
-            className="h-15 py-2 px-4 align-middle text-white bg-red-700 text-2xl ml-9 md:-mx-[19%] rounded-lg cursor-pointer"
+            className=" h-15 py-2 px-4 align-middle text-white bg-red-700 text-2xl ml-[37%] md:-mx-[19%] rounded-lg cursor-pointer"
             onClick={handleGptSearch}
           >
             {loading?<LoadingSpinner />:bhasha.search}

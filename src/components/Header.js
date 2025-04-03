@@ -11,7 +11,7 @@ import { toggleGptSearchView } from "../utils/redux/slices/gptSlice";
 const Header = () => {
   const loginStatus = useSelector((store) => store.userData);
   const status = useSelector((store)=>store.gpt.showGptSearch);
-  console.log(status);
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
